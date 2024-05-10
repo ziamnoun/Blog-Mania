@@ -11,6 +11,8 @@ import AddBlog from "./AddBlog/AddBlog";
 import WishList from "./Wishlist/WishList";
 import AllBlog from "./AllBlog/AllBlog";
 import FeaturedBlogs from "./FeaturedBlogs/FeaturedBlogs";
+import Register from "./Register/Register";
+import LogIn from "./LogIn/LogIn";
 
 const router = createBrowserRouter([
   {
@@ -32,6 +34,13 @@ const router = createBrowserRouter([
     { path: "/WishList",
       element: <WishList></WishList>
     },
+   
+    { path: "/Register",
+      element: <Register></Register>
+    },
+    { path: "/LogIn",
+    element: <LogIn></LogIn>
+  },
     ]
   },
 ]);
