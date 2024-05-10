@@ -5,6 +5,15 @@ const AddBlog = () => {
     
       const handleSubmit = (e) => {
         e.preventDefault();
+        const form = e.target;
+        const imageURL = form.image.value;
+        const title = form.itemName.value;
+        const category = form.category.value;
+        const shortDescription = form.shortDescription.value;
+        const longDescription = form.longDescription.value;
+        const userEmail = form.userEmail.value;
+        const userName = form.userName.value;
+       
      
       };
 
