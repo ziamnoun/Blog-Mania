@@ -1,4 +1,6 @@
 import React from 'react';
+import { toast, ToastContainer } from 'react-toastify';
+import 'react-toastify/dist/ReactToastify.css';
 
 const AddBlog = () => {
  
@@ -13,6 +15,32 @@ const AddBlog = () => {
         const longDescription = form.longDescription.value;
         const userEmail = form.userEmail.value;
         const userName = form.userName.value;
+
+        const blogData={
+            imageURL,
+            title,
+            category,
+            shortDescription,
+            longDescription,
+            userEmail,
+            userName
+        }
+        fetch('http://localhost:5000/data', {
+              method: 'POST',
+              headers: {
+                  'content-type': 'application/json'
+              },
+              body: JSON.stringify(blogData)
+          })
+              .then(res => res.json())
+              .then(data => {
+                  console.log(data);
+                  if (data.insertedId) {
+                      toast.success("Successfully Added!");
+                  }
+
+              });
+ 
        
      
       };
@@ -72,6 +100,7 @@ const AddBlog = () => {
           </div>
         </form>
       </div>
+      <ToastContainer></ToastContainer>
       
     </div>
     );
