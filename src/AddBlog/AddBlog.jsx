@@ -11,6 +11,7 @@ const AddBlog = () => {
         const imageURL = form.image.value;
         const title = form.itemName.value;
         const category = form.category.value;
+        const date = form.Date.value;
         const shortDescription = form.shortDescription.value;
         const longDescription = form.longDescription.value;
         const userEmail = form.userEmail.value;
@@ -19,6 +20,7 @@ const AddBlog = () => {
         const blogData={
             imageURL,
             title,
+            date,
             category,
             shortDescription,
             longDescription,
@@ -84,6 +86,10 @@ const AddBlog = () => {
           <div className="mb-4">
             <label htmlFor="longDescription" className="block  mb-2">Long Description</label>
             <textarea id="longDescription" name="longDescription" rows="3" className="w-full px-3 py-2 leading-tight text-gray-700 bg-gray-200 border rounded shadow appearance-none focus:outline-none focus:shadow-outline"></textarea>
+          </div>
+          <div className="mb-4">
+            <label htmlFor="Date" className="block  mb-2">Date</label>
+            <input type="text" id="Date" name="Date" className="w-full px-3 py-2 leading-tight text-gray-700 bg-gray-200 border rounded shadow appearance-none focus:outline-none focus:shadow-outline" />
           </div>
         
         
