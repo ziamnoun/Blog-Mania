@@ -10,7 +10,20 @@ import 'react-toastify/dist/ReactToastify.css';
 
 
 const LogIn = () => {
-  const {singInUser,signInWithGoogle}=useContext(AuthContext);
+  const {singInUser,signInWithGoogle,githubLogIn}=useContext(AuthContext);
+
+
+  const handleGithubLogIn=()=>{
+    githubLogIn()
+    .then(result=>{
+      toast.success("Successfully Logged In With Github")
+      
+    })
+    .catch(error=>{
+      toast.error("Failed to Logged In ")
+     
+    })
+  }
 
 
   const handleGoogleLogIn=()=>{
@@ -73,11 +86,12 @@ const LogIn = () => {
           </form>
           <div className="flex items-center justify-between">
               <button onClick={handleGoogleLogIn} type="button" className="px-4 py-2 btn btn-warning rounded hover:bg-red-600 focus:outline-none focus:bg-red-600"><FaGoogle />Login with Google</button>
-              <button type="button" className="px-4 py-2 text-white btn btn-active btn-neutral hover:bg-red-600 focus:outline-none focus:bg-red-600"><FaGithub />Login with GitHub</button>
+              <button onClick={handleGithubLogIn} type="button" className="px-4 py-2 text-white btn btn-active btn-neutral hover:bg-red-600 focus:outline-none focus:bg-red-600"><FaGithub />Login with GitHub</button>
             </div>
           <p className="text-center text-white mt-2">
             Don't have an account? <NavLink to="/Register" className="underline">Register Now</NavLink>
           </p>
+          
         </div>
         
       
