@@ -6,8 +6,25 @@ import { AuthContext } from '../Provider/AuthProvider';
 import { ToastContainer, toast } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
 
+
+
+
 const LogIn = () => {
-  const {singInUser}=useContext(AuthContext);
+  const {singInUser,signInWithGoogle}=useContext(AuthContext);
+
+
+  const handleGoogleLogIn=()=>{
+    signInWithGoogle()
+    .then(result=>{
+      toast.success("Successfully Logged In With Google")
+      
+    })
+    .catch(error=>{
+      toast.error("Failed to Logged In ")
+     
+    })
+  }
+
 
   const handleLogIn=e=>{
     e.preventDefault();
@@ -16,11 +33,13 @@ const LogIn = () => {
     singInUser(email,password)
     .then(result=>{
       console.log(result.user);
-      toast.success('Successfully Log In')
+      toast.success("Successfully Logged In ")
+     
     })
     .catch(error=>{
       console.log(error)
-      toast.error('Failed to Log In')
+      toast.error("Failed to Logged In ")
+     
     })
 
 
@@ -50,16 +69,17 @@ const LogIn = () => {
             <div className="mb-6">
               <button type="submit" className="w-full px-4 py-2 text-white bg-red-500 rounded hover:bg-red-600 focus:outline-none focus:bg-red-600">Log In</button>
             </div>
-            <div className="flex items-center justify-between">
-              <button  type="button" className="px-4 py-2 btn btn-warning rounded hover:bg-red-600 focus:outline-none focus:bg-red-600"><FaGoogle />Login with Google</button>
+            
+          </form>
+          <div className="flex items-center justify-between">
+              <button onClick={handleGoogleLogIn} type="button" className="px-4 py-2 btn btn-warning rounded hover:bg-red-600 focus:outline-none focus:bg-red-600"><FaGoogle />Login with Google</button>
               <button type="button" className="px-4 py-2 text-white btn btn-active btn-neutral hover:bg-red-600 focus:outline-none focus:bg-red-600"><FaGithub />Login with GitHub</button>
             </div>
-          </form>
           <p className="text-center text-white mt-2">
             Don't have an account? <NavLink to="/Register" className="underline">Register Now</NavLink>
           </p>
         </div>
-        <ToastContainer></ToastContainer>
+        
       
       </div>
     );
