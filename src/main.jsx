@@ -14,6 +14,10 @@ import FeaturedBlogs from "./FeaturedBlogs/FeaturedBlogs";
 import Register from "./Register/Register";
 import LogIn from "./LogIn/LogIn";
 import AuthProvider from "./Provider/AuthProvider";
+import PersonalRoute from "./PersonalROute/PersonalRoute";
+
+
+
 
 const router = createBrowserRouter([
   {
@@ -33,7 +37,7 @@ const router = createBrowserRouter([
       element: <AllBlog></AllBlog>
     },
     { path: "/WishList",
-      element: <WishList></WishList>
+      element: <PersonalRoute><WishList></WishList></PersonalRoute>
     },
    
     { path: "/Register",
