@@ -1,7 +1,7 @@
 import React, { createContext, useEffect, useState } from 'react';
 import PropTypes from 'prop-types'; 
 import auth from '../firebase/firebase.config';
-import { createUserWithEmailAndPassword, onAuthStateChanged, signInWithEmailAndPassword } from 'firebase/auth';
+import { createUserWithEmailAndPassword, onAuthStateChanged, signInWithEmailAndPassword, signOut } from 'firebase/auth';
 
 export const AuthContext = createContext(null);
 
@@ -19,10 +19,11 @@ const AuthProvider = ({ children }) => {
 
     useEffect(() => {
         const unSubscribe = onAuthStateChanged(auth, (currentUser) => {
+           
             if (currentUser) {
                 setUser(currentUser);
             } else {
-                setUser(null); // Clear user state when signed out
+                setUser(null); 
             }
         });
 
@@ -31,9 +32,13 @@ const AuthProvider = ({ children }) => {
         }
     }, [])
 
+    const logOut=()=>{
+        return signOut(auth);
+    }
+
 
     const authInfo = {
-        user,createUser,singInUser
+        user,createUser,singInUser,logOut,signOut
     }
 
     return (
