@@ -1,14 +1,39 @@
-import React from 'react';
+import React, { useContext } from 'react';
 import { NavLink } from 'react-router-dom';
 import { FaGoogle } from "react-icons/fa";
 import { FaGithub } from "react-icons/fa";
+import { AuthContext } from '../Provider/AuthProvider';
+import { ToastContainer, toast } from 'react-toastify';
+import 'react-toastify/dist/ReactToastify.css';
 
 const LogIn = () => {
+  const {singInUser}=useContext(AuthContext);
+
+  const handleLogIn=e=>{
+    e.preventDefault();
+    const email = e.target.email.value;
+    const password = e.target.password.value;
+    singInUser(email,password)
+    .then(result=>{
+      console.log(result.user);
+      toast.success('Successfully Log In')
+    })
+    .catch(error=>{
+      console.log(error)
+      toast.error('Failed to Log In')
+    })
+
+
+  }
+
+
+
+
     return (
         <div className="min-h-screen flex items-center justify-center ">
         <div className="max-w-md w-full px-6 py-8 bg-gray-900 rounded-lg shadow-lg">
           <h2 className="text-2xl font-semibold text-white mb-8">Log In</h2>
-          <form >
+          <form onSubmit={handleLogIn}>
           <div className="mb-4">
               <label htmlFor="username" className="block text-white mb-2">Username</label>
               <input type="text" id="username" name="username" className="w-full px-3 py-2 leading-tight text-gray-700 bg-gray-200 border rounded shadow appearance-none focus:outline-none focus:shadow-outline" />
@@ -34,6 +59,7 @@ const LogIn = () => {
             Don't have an account? <NavLink to="/Register" className="underline">Register Now</NavLink>
           </p>
         </div>
+        <ToastContainer></ToastContainer>
       
       </div>
     );

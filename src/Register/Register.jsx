@@ -19,7 +19,8 @@ const Register = () => {
       toast.success('Successfully Registered')
     })
     .catch(error=>{
-      console.log(error)
+      console.log(error);
+      toast.error('Failed to Register')
     })
 
   }
