@@ -33,7 +33,8 @@ const router = createBrowserRouter([
       element: <AddBlog></AddBlog>
     },
     { path: "/FeaturedBlogs",
-      element:<FeaturedBlogs></FeaturedBlogs>
+      element:<FeaturedBlogs></FeaturedBlogs>,
+      loader:()=>fetch('http://localhost:5000/data')
     },
     { path: "/AllBlog",
       element: <AllBlog></AllBlog>,
