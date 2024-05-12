@@ -39,6 +39,9 @@ const AddBlog = () => {
                   console.log(data);
                   if (data.insertedId) {
                       toast.success("Successfully Added!");
+                      setTimeout(() => {
+                        window.location.reload();
+                    }, 2000);
                   }
 
               });
@@ -54,7 +57,7 @@ const AddBlog = () => {
     return (
         <div className="min-h-screen flex items-center justify-center mt-10">
       <div className="max-w-md w-full px-6 py-8 bg-black text-white rounded-lg shadow-lg">
-        <h2 className="text-2xl font-semibold  mb-4">Add Craft Item</h2>
+        <h2 className="text-2xl font-semibold  mb-4">Add Blog</h2>
         <form onSubmit={handleSubmit}>
           <div className="mb-4">
             <label htmlFor="image" className="block  mb-2">Image URL</label>
@@ -76,6 +79,9 @@ const AddBlog = () => {
             <option value="Technology">Technology</option>
             <option value="Travel">Travel</option>
             <option value="Food">Food</option>
+            <option value="Programming">Programming</option>
+            <option value="Nature">Nature</option>
+            <option value="Health">Health</option>
            
           </select>
         </div>
