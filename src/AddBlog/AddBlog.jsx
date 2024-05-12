@@ -16,6 +16,7 @@ const AddBlog = () => {
         const longDescription = form.longDescription.value;
         const userEmail = form.userEmail.value;
         const userName = form.userName.value;
+        const userImage = form.userImage.value;
 
         const blogData={
             imageURL,
@@ -25,7 +26,8 @@ const AddBlog = () => {
             shortDescription,
             longDescription,
             userEmail,
-            userName
+            userName,
+            userImage
         }
         fetch('http://localhost:5000/data', {
               method: 'POST',
@@ -107,6 +109,10 @@ const AddBlog = () => {
             <label htmlFor="userName" className="block  mb-2">User Name</label>
             <input type="text" id="userName" name="userName" className="w-full px-3 py-2 leading-tight text-gray-700 bg-gray-200 border rounded shadow appearance-none focus:outline-none focus:shadow-outline" />
           </div>
+          <div className="mb-4">
+                        <label htmlFor="userImage" className="block  mb-2">User Image URL</label>
+                        <input type="text" id="userImage" name="userImage" className="w-full px-3 py-2 leading-tight text-gray-700 bg-gray-200 border rounded shadow appearance-none focus:outline-none focus:shadow-outline" />
+                    </div>
           <div className="mb-6">
             <button type="submit" className="w-full px-4 py-2 text-white bg-red-600 rounded hover:bg-blue-600 focus:outline-none focus:bg-blue-600">Add</button>
           </div>

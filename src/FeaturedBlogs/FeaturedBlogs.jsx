@@ -35,7 +35,7 @@ const FeaturedBlogs = () => {
                         <td className="px-6 py-4 whitespace-nowrap">{blog.title}</td>
                         <td className="px-6 py-4 whitespace-nowrap">{blog.userName}</td>
                         <td className="px-6 py-4 whitespace-nowrap">
-                            <img src={blog.profilePicture} alt="Profile" className="h-10 w-10 rounded-full" />
+                            <img src={blog.userImage || "https://daisyui.com/images/stock/photo-1534528741775-53994a69daeb.jpg"} alt="Profile" className="h-10 w-10 rounded-full" />
                         </td>
                     </tr>
                 ))}
