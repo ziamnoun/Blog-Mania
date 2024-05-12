@@ -16,11 +16,12 @@ const Homecard = ({ blogData }) => {
             <p className="text-sm text-red-600">Category: {blogData.category}</p>
             <p className="text-sm text-red-600">Date: {blogData.date}</p>
           </div>
-          <div>
+          
+        </div>
+        <div>
             <button className="btn btn-primary mr-2 bg-red-600">View Details</button>
             <button className="btn btn-danger border-red-600">Delete</button>
           </div>
-        </div>
       </div>
     </div>
   );

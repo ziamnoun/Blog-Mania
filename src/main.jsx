@@ -36,7 +36,8 @@ const router = createBrowserRouter([
       element:<FeaturedBlogs></FeaturedBlogs>
     },
     { path: "/AllBlog",
-      element: <AllBlog></AllBlog>
+      element: <AllBlog></AllBlog>,
+      loader:()=>fetch('http://localhost:5000/data')
     },
     { path: "/WishList",
       element: <PersonalRoute><WishList></WishList></PersonalRoute>
