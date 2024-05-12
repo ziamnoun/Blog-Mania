@@ -15,6 +15,7 @@ import Register from "./Register/Register";
 import LogIn from "./LogIn/LogIn";
 import AuthProvider from "./Provider/AuthProvider";
 import PersonalRoute from "./PersonalROute/PersonalRoute";
+import HomeCard from "./HomeCard/HomeCard";
 
 
 
@@ -25,7 +26,8 @@ const router = createBrowserRouter([
     element: <MainLayOut></MainLayOut>,
     children:[
       { path: "/",
-      element: <Home></Home>
+      element: <Home></Home>,
+      loader:()=>fetch('http://localhost:5000/data')
     },
     { path: "/AddBlog",
       element: <AddBlog></AddBlog>
@@ -43,10 +45,12 @@ const router = createBrowserRouter([
     { path: "/Register",
       element: <Register></Register>
     },
-    { path: "/LogIn",
-    element: <LogIn></LogIn>
-  },
+    
     ]
+  },
+  { path: "/HomeCard",
+    element: <HomeCard></HomeCard>,
+    loader:()=>fetch('http://localhost:5000/data')
   },
 ]);
 
