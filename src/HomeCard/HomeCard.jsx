@@ -2,7 +2,7 @@
 
 
 import React from 'react';
-import { useLoaderData } from 'react-router-dom';
+import { Link, useLoaderData } from 'react-router-dom';
 
 const Homecard = ({ blogData }) => {
   return (
@@ -20,7 +20,7 @@ const Homecard = ({ blogData }) => {
         </div>
         <div>
             <button className="btn btn-primary mr-2 bg-red-600">View Details</button>
-            <button className="btn btn-danger border-red-600">Delete</button>
+            <Link to={`/UpdateBlog/${blogData._id}`}><button className="btn btn-danger border-red-600">Edit</button></Link>
           </div>
       </div>
     </div>

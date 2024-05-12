@@ -16,6 +16,7 @@ import LogIn from "./LogIn/LogIn";
 import AuthProvider from "./Provider/AuthProvider";
 import PersonalRoute from "./PersonalROute/PersonalRoute";
 import HomeCard from "./HomeCard/HomeCard";
+import UpdateBlog from "./UpdateBlog/UpdateBlog";
 
 
 
@@ -46,6 +47,11 @@ const router = createBrowserRouter([
    
     { path: "/Register",
       element: <Register></Register>
+    },
+    { path: "/UpdateBlog/:id",
+      element: <UpdateBlog></UpdateBlog>,
+      loader:({params})=>fetch(`http://localhost:5000/data/${params.id}`)
+    
     },
     { path: "/LogIn",
     element: <LogIn></LogIn>

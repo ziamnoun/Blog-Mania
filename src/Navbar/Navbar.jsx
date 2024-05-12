@@ -28,6 +28,7 @@ const Navbar = () => {
     <li><NavLink to='/FeaturedBlogs' className={({isActive})=> isActive?  'border-solid border-2 border-black   px-4 py-2 rounded-md transition-colors duration-300 ease-in-out hover:bg-red-600 hover:text-white' :' border-2'}>Featured Blogs</NavLink></li>
     <li><NavLink to='/AddBlog' className={({isActive})=> isActive?  'border-solid border-2 border-black   px-4 py-2 rounded-md transition-colors duration-300 ease-in-out hover:bg-red-600 hover:text-white' :' border-2 '}>Add Blogs</NavLink></li>
     <li><NavLink to='/WishList' className={({isActive})=> isActive?  'border-solid border-2 border-black   px-4 py-2 rounded-md transition-colors duration-300 ease-in-out hover:bg-red-600 hover:text-white' :' border-2'}>Wish list</NavLink></li>
+    <li><NavLink to='/UpdateBlog' className={({isActive})=> isActive?  'border-solid border-2 border-black   px-4 py-2 rounded-md transition-colors duration-300 ease-in-out hover:bg-red-600 hover:text-white' :' border-2'}>Update Blog</NavLink></li>
    
    </>
 
