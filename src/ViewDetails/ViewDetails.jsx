@@ -10,6 +10,7 @@ import { AuthContext } from '../Provider/AuthProvider';
 const ViewDetails = () => {
 
   const{user}=useContext(AuthContext)
+  console.log(user)
     
  const blog=useLoaderData();
  const [commentText,setCommentText]=useState([])
@@ -47,16 +48,20 @@ console.log(user);
 
 
     const handleComment=(e)=>{
+      if(user.email===blog.userEmail){
+        toast.error("You cannot comment on own post");
+      }
       e.preventDefault();
       const form = e.target;
       // {user.photoURL || "https://daisyui.com/images/stock/photo-1534528741775-53994a69daeb.jpg"}
 
       const comment=form.comment.value;
+      const userName=user.displayName || "Unknown";
       const uImage=user.photoURL || "https://daisyui.com/images/stock/photo-1534528741775-53994a69daeb.jpg";
       const postId=blog._id;
-      console.log(comment,uImage,postId)
+      console.log(comment,postId)
       const commenData={
-        comment,uImage,postId
+        comment,postId,userName,uImage
       }
 
       fetch('http://localhost:5000/comment', {
@@ -130,21 +135,35 @@ console.log(user);
       {
   filteredComments.map(e => (
     <div key={e._id} className="flex items-start mb-4">
-      <img src="https://via.placeholder.com/40" alt="Avatar" className="w-10 h-10 rounded-full mr-4" />
+      <img src={e.uImage} alt="Avatar" className="w-10 h-10 rounded-full mr-4" />
       <div>
-        <p className="font-semibold">John Doe</p>
+        <p className="font-semibold">{e.userName}</p>
         <p className="text-sm text-gray-600">{e.comment}</p>
       </div>
     </div>
   ))
 }
         {/* Add Comment Form */}
-        <form onSubmit={handleComment} className="flex mt-4">
-        {/* {user.photoURL || "https://daisyui.com/images/stock/photo-1534528741775-53994a69daeb.jpg"} */}
+        {/* <form onSubmit={handleComment} className="flex mt-4">
+        
           <img id="userImage" name="userImage" src={user.photoURL || "https://daisyui.com/images/stock/photo-1534528741775-53994a69daeb.jpg"} alt="Avatar" className="w-10 h-10 rounded-full mr-4" />
           <input type="text" id="comment" name="comment" placeholder="Add a comment..." className="flex-1 bg-gray-200 rounded-full py-2 px-4 focus:outline-none" />
           <button type="submit" className="bg-blue-500 hover:bg-blue-600 text-white font-semibold py-2 px-4 rounded-full ml-2">Post</button>
-        </form>
+        </form> */}
+        {
+      user && <form onSubmit={handleComment} className="flex mt-4">
+        
+      <img id="userImage" name="userImage" src={user.photoURL || "https://daisyui.com/images/stock/photo-1534528741775-53994a69daeb.jpg"} alt="Avatar" className="w-10 h-10 rounded-full mr-4" />
+      <input type="text" id="comment" name="comment" placeholder="Add a comment..." className="flex-1 bg-gray-200 rounded-full py-2 px-4 focus:outline-none" />
+      <button type="submit" className="bg-red-600 hover:bg-blue-600 text-white font-semibold py-2 px-4 rounded-full ml-2">Post</button>
+    </form>
+      
+    }
+     {!user && (
+      <div className="div">
+        For comment:Please <Link to='/LogIn'><span className='underline'>Log In</span></Link>
+      </div>
+      )}
       </div>
       <ToastContainer></ToastContainer>
     </div>
