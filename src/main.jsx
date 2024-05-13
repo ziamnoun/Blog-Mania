@@ -43,7 +43,8 @@ const router = createBrowserRouter([
       loader:()=>fetch('http://localhost:5000/data')
     },
     { path: "/WishList",
-      element: <PersonalRoute><WishList></WishList></PersonalRoute>
+      element: <PersonalRoute><WishList></WishList></PersonalRoute>,
+      loader:()=>fetch('http://localhost:5000/wish')
     },
    
     { path: "/Register",
