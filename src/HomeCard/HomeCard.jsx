@@ -19,7 +19,7 @@ const Homecard = ({ blogData }) => {
           
         </div>
         <div>
-            <button className="btn btn-primary mr-2 bg-red-600">View Details</button>
+            <Link to={`/ViewDetails/${blogData._id}`}><button className="btn btn-primary mr-2 bg-red-600">View Details</button></Link>
             <Link to={`/UpdateBlog/${blogData._id}`}><button className="btn btn-danger border-red-600">Edit</button></Link>
           </div>
       </div>

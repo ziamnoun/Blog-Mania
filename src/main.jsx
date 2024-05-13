@@ -17,6 +17,7 @@ import AuthProvider from "./Provider/AuthProvider";
 import PersonalRoute from "./PersonalROute/PersonalRoute";
 import HomeCard from "./HomeCard/HomeCard";
 import UpdateBlog from "./UpdateBlog/UpdateBlog";
+import ViewDetails from "./ViewDetails/ViewDetails";
 
 
 
@@ -51,11 +52,16 @@ const router = createBrowserRouter([
     { path: "/UpdateBlog/:id",
       element: <UpdateBlog></UpdateBlog>,
       loader:({params})=>fetch(`http://localhost:5000/data/${params.id}`)
-    
     },
+   
     { path: "/LogIn",
     element: <LogIn></LogIn>
   },
+  { path: "/ViewDetails/:id",
+  element: <ViewDetails></ViewDetails>,
+  loader:({params})=>fetch(`http://localhost:5000/data/${params.id}`)
+  
+},
   
     
     ]
@@ -64,6 +70,7 @@ const router = createBrowserRouter([
     element: <HomeCard></HomeCard>,
     loader:()=>fetch('http://localhost:5000/data')
   },
+  
 ]);
 
 ReactDOM.createRoot(document.getElementById("root")).render(

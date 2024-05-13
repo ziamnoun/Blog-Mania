@@ -1,16 +1,60 @@
 
 import React from 'react';
 import { useLoaderData } from 'react-router-dom';
+import { toast, ToastContainer } from 'react-toastify';
+import 'react-toastify/dist/ReactToastify.css';
+
 
 const UpdateBlog = () => {
     const blog = useLoaderData();
     console.log(blog);
+    const handleUpdateBlog=(e)=>{
+        e.preventDefault();
+        const form = e.target;
+        const imageURL = form.image.value;
+        const title = form.itemName.value;
+        const category = form.category.value;
+        const date = form.Date.value;
+        const shortDescription = form.shortDescription.value;
+        const longDescription = form.longDescription.value;
+        const userEmail = form.userEmail.value;
+        const userName = form.userName.value;
+        const userImage = form.userImage.value;
+        const blogData={
+            imageURL,
+            title,
+            date,
+            category,
+            shortDescription,
+            longDescription,
+            userEmail,
+            userName,
+            userImage
+        }
+
+
+        fetch(`http://localhost:5000/data/${blog._id}`, {
+              method: 'PUT',
+              headers: {
+                  'content-type': 'application/json'
+              },
+              body: JSON.stringify(blogData)
+          })
+              .then(res => res.json())
+              .then(data => {
+                  console.log(data);
+                  if (data.modifiedCount>0) {
+                      toast.success("Successfully Updated!");
+                  }
+
+              });
+    }
 
     return (
         <div className="min-h-screen flex items-center justify-center mt-10">
             <div className="max-w-md w-full px-6 py-8 bg-black text-white rounded-lg shadow-lg">
                 <h2 className="text-2xl font-semibold mb-4">Update Blog</h2>
-                <form>
+                <form onSubmit={handleUpdateBlog}>
                     <div className="mb-4">
                         <label htmlFor="image" className="block mb-2">Image URL</label>
                         <input
@@ -21,6 +65,7 @@ const UpdateBlog = () => {
                             placeholder={blog.imageURL}
                         />
                     </div>
+                  
                     <div className="mb-4">
                         <label htmlFor="itemName" className="block mb-2">Title</label>
                         <input
@@ -36,6 +81,7 @@ const UpdateBlog = () => {
                         <select
                             id="category"
                             name="category"
+                         
                             className="text-black w-full border border-gray-300 rounded-md focus:outline-none focus:border-blue-400 px-3 py-2"
                             required
                         >
@@ -119,6 +165,7 @@ const UpdateBlog = () => {
                     </div>
                 </form>
             </div>
+            <ToastContainer></ToastContainer>
         </div>
     );
 };

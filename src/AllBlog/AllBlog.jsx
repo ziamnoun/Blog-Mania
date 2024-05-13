@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import { useLoaderData } from 'react-router-dom';
+import { Link, useLoaderData } from 'react-router-dom';
 
 const AllBlog = () => {
     const blogData = useLoaderData();
@@ -61,7 +61,7 @@ const AllBlog = () => {
           
         </div>
                         <div className="card-actions justify-end">
-                            <button className="btn btn-primary bg-red-600">View Details</button>
+                        <Link to={`/ViewDetails/${blog._id}`}><button className="btn btn-primary mr-2 bg-red-600">View Details</button></Link>
                             <button className="btn btn-primary border-red-600 bg-white text-red-600">Wish List</button>
                         </div>
                     </div>
