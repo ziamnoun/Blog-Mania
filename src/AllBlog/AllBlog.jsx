@@ -1,10 +1,15 @@
-import React, { useState } from 'react';
+
+
+import React, { useContext, useState } from 'react';
 import { Link, useLoaderData } from 'react-router-dom';
+import { AuthContext } from '../Provider/AuthProvider';
 
 const AllBlog = () => {
     const blogData = useLoaderData();
     const [searchTerm, setSearchTerm] = useState('');
     const [selectedCategory, setSelectedCategory] = useState('');
+
+    const { user } = useContext(AuthContext);
 
     const filteredBlogs = blogData.filter(blog => {
         return (
@@ -19,6 +24,10 @@ const AllBlog = () => {
 
     const handleCategoryChange = (e) => {
         setSelectedCategory(e.target.value);
+    };
+
+    const isOwner = (blog) => {
+        return user && user.email.toLowerCase() === blog.userEmail.toLowerCase();
     };
 
     return (
@@ -39,12 +48,12 @@ const AllBlog = () => {
                 >
                     <option value="">All Categories</option>
                     <option value="">Select Category</option>
-            <option value="Technology">Technology</option>
-            <option value="Travel">Travel</option>
-            <option value="Food">Food</option>
-            <option value="Programming">Programming</option>
-            <option value="Nature">Nature</option>
-            <option value="Health">Health</option>
+                    <option value="Technology">Technology</option>
+                    <option value="Travel">Travel</option>
+                    <option value="Food">Food</option>
+                    <option value="Programming">Programming</option>
+                    <option value="Nature">Nature</option>
+                    <option value="Health">Health</option>
                 </select>
             </div>
             {filteredBlogs.map((blog, index) => (
@@ -54,14 +63,14 @@ const AllBlog = () => {
                         <h2 className="card-title text-red-600">{blog.title}</h2>
                         <p>{blog.shortDescription}</p>
                         <div className="flex justify-between items-center mt-4">
-          <div>
-            <p className="text-sm ">Category: {blog.category}</p>
-            <p className="text-sm ">Date: {blog.date}</p>
-          </div>
-          
-        </div>
+                            <div>
+                                <p className="text-sm ">Category: {blog.category}</p>
+                                <p className="text-sm ">Date: {blog.date}</p>
+                            </div>
+                        </div>
                         <div className="card-actions justify-end">
-                        <Link to={`/ViewDetails/${blog._id}`}><button className="btn btn-primary mr-2 bg-red-600">View Details</button></Link>
+                            <Link to={`/ViewDetails/${blog._id}`}><button className="btn btn-primary mr-2 bg-red-600">View Details</button></Link>
+                            {isOwner(blog) && <Link to={`/UpdateBlog/${blog._id}`}><button className="btn btn-danger border-red-600">Update</button></Link>}
                             <button className="btn btn-primary border-red-600 bg-white text-red-600">Wish List</button>
                         </div>
                     </div>
@@ -72,3 +81,4 @@ const AllBlog = () => {
 };
 
 export default AllBlog;
+

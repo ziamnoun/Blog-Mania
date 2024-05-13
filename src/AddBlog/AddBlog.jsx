@@ -7,6 +7,7 @@ const AddBlog = () => {
     
       const handleSubmit = (e) => {
         e.preventDefault();
+       
         const form = e.target;
         const imageURL = form.image.value;
         const title = form.itemName.value;
@@ -17,6 +18,7 @@ const AddBlog = () => {
         const userEmail = form.userEmail.value;
         const userName = form.userName.value;
         const userImage = form.userImage.value;
+
 
         const blogData={
             imageURL,
@@ -61,11 +63,20 @@ const AddBlog = () => {
       <div className="max-w-md w-full px-6 py-8 bg-black text-white rounded-lg shadow-lg">
         <h2 className="text-2xl font-semibold  mb-4">Add Blog</h2>
         <form onSubmit={handleSubmit}>
-         a
           <div className="mb-4">
             <label htmlFor="itemName" className="block  mb-2">Title</label>
             <input type="text" id="itemName" name="itemName" className="w-full px-3 py-2 leading-tight text-gray-700 bg-gray-200 border rounded shadow appearance-none focus:outline-none focus:shadow-outline" />
           </div>
+          <div className="mb-4">
+                        <label htmlFor="image" className="block mb-2">Image URL</label>
+                        <input
+                            type="text"
+                            id="image"
+                            name="image"
+                            className="w-full px-3 py-2 leading-tight text-gray-700 bg-gray-200 border rounded shadow appearance-none focus:outline-none focus:shadow-outline"
+                           
+                        />
+                    </div>
           <div className="mb-4">
           <label htmlFor="category" className="block  font-semibold mb-1">Category:</label>
           <select

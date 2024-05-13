@@ -39,6 +39,7 @@ const idInt=parseInt(id);
 const filteredComments = commentText.filter(comment => comment.postId === id);
 console.log(filteredComments);
 console.log(user);
+const isOwner = user && user.email.toLowerCase() === blog.userEmail.toLowerCase();
 
 
 
@@ -48,12 +49,19 @@ console.log(user);
 
 
     const handleComment=(e)=>{
-      if(user.email===blog.userEmail){
-        toast.error("You cannot comment on own post");
-      }
+      
       e.preventDefault();
+      if (!user) {
+       
+        toast.error("Please log in to comment.");
+        return;
+      }
+      if(isOwner){
+        toast.error("You cannot comment on own post");
+        return;
+      }
       const form = e.target;
-      // {user.photoURL || "https://daisyui.com/images/stock/photo-1534528741775-53994a69daeb.jpg"}
+      
 
       const comment=form.comment.value;
       const userName=user.displayName || "Unknown";
@@ -143,14 +151,7 @@ console.log(user);
     </div>
   ))
 }
-        {/* Add Comment Form */}
-        {/* <form onSubmit={handleComment} className="flex mt-4">
-        
-          <img id="userImage" name="userImage" src={user.photoURL || "https://daisyui.com/images/stock/photo-1534528741775-53994a69daeb.jpg"} alt="Avatar" className="w-10 h-10 rounded-full mr-4" />
-          <input type="text" id="comment" name="comment" placeholder="Add a comment..." className="flex-1 bg-gray-200 rounded-full py-2 px-4 focus:outline-none" />
-          <button type="submit" className="bg-blue-500 hover:bg-blue-600 text-white font-semibold py-2 px-4 rounded-full ml-2">Post</button>
-        </form> */}
-        {
+       {
       user && <form onSubmit={handleComment} className="flex mt-4">
         
       <img id="userImage" name="userImage" src={user.photoURL || "https://daisyui.com/images/stock/photo-1534528741775-53994a69daeb.jpg"} alt="Avatar" className="w-10 h-10 rounded-full mr-4" />
