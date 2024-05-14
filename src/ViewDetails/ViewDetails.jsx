@@ -9,7 +9,7 @@ import { AuthContext } from '../Provider/AuthProvider';
 
 const ViewDetails = () => {
 
-  const{user}=useContext(AuthContext)
+  const{user,userEmaill}=useContext(AuthContext)
   console.log(user)
     
  const blog=useLoaderData();
@@ -100,6 +100,32 @@ const isOwner = user && user.email.toLowerCase() === blog.userEmail.toLowerCase(
     };
 
 
+    const addToWishlist = async (blog) => {
+       
+        
+      const wishBlog={blog,userEmaill}
+      console.log(wishBlog)
+      try {
+          const response = await fetch('https://blog-site-server-iota.vercel.app/Wish', {
+              method: 'POST',
+              headers: {
+                  'Content-Type': 'application/json',
+              },
+              body: JSON.stringify(wishBlog),
+          });
+
+          if (!response.ok) {
+              throw new Error('Failed to add blog to wishlist');
+          }
+          toast.success('Blog added to wishlist successfully!');
+
+      } catch (error) {
+          console.error('Error adding blog to wishlist:', error);
+      }
+     
+      
+  };
+
     return (
         <div className="div mg:w-[80%] m-auto">
             <Card sx={{ display: 'flex', minHeight: '100vh', backgroundColor: 'black', color: 'white' }}>
@@ -133,9 +159,10 @@ const isOwner = user && user.email.toLowerCase() === blog.userEmail.toLowerCase(
             <span className='text-red-600'>Contact:</span>{blog.userEmail} 
           </Typography>
           
-          <Button variant="contained" sx={{ mt: 2 ,backgroundColor: '#dc2626'}}>Add to Wishlist</Button>
+          <Button onClick={() => addToWishlist(blog)}  variant="contained" sx={{ mt: 2 ,backgroundColor: '#dc2626'}}>Add to Wishlist</Button>
           <Typography variant="body2" color="text.secondary" sx={{ color: 'white' }}>
-          <Link to={`/UpdateBlog/${blog._id}`}><button className="btn btn-primary bg-white text-black mt-5 border-red-600">Edit</button></Link>
+          {/* <Link to={`/UpdateBlog/${blog._id}`}><button className="btn btn-primary bg-white text-black mt-5 border-red-600">Update</button></Link> */}
+          {isOwner && <Link to={`/UpdateBlog/${blog._id}`}><button className="btn btn-danger border-red-600">Update</button></Link>}
           </Typography>
         </CardContent>
       </Card>
