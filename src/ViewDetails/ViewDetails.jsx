@@ -84,9 +84,12 @@ const isOwner = user && user.email.toLowerCase() === blog.userEmail.toLowerCase(
             console.log(data);
             if (data.insertedId) {
                 toast.success("Comment Added Successfully!");
-                setTimeout(() => {
-                  window.location.reload();
-              }, 2000);
+              //   setTimeout(() => {
+              //     window.location.reload();
+              // }, 2000);
+             
+             
+              
               
             }
             else{
