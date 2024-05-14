@@ -24,7 +24,7 @@ const WishList = () => {
     //         confirmButtonText: "Yes, delete it!"
     //       }).then((result) => {
     //         if (result.isConfirmed) {
-    //          fetch(`https://blog-site-server-ezpys04xi-ziams-projects-ea91788d.vercel.app/wish/${_id}`,{
+    //          fetch(`https://blog-site-server-iota.vercel.app/wish/${_id}`,{
     //             method:"DELETE"
     //          })
     //          .then(res=>res.json())
@@ -56,7 +56,7 @@ const WishList = () => {
     //         confirmButtonText: "Yes, delete it!"
     //     }).then((result) => {
     //         if (result.isConfirmed) {
-    //             fetch(`https://blog-site-server-ezpys04xi-ziams-projects-ea91788d.vercel.app/wish/${_id}`, {
+    //             fetch(`https://blog-site-server-iota.vercel.app/wish/${_id}`, {
     //                 method: "DELETE"
     //             })
     //             .then(res => {
@@ -99,7 +99,7 @@ const WishList = () => {
             confirmButtonText: "Yes, delete it!"
         }).then((result) => {
             if (result.isConfirmed) {
-                fetch(`https://blog-site-server-ezpys04xi-ziams-projects-ea91788d.vercel.app/wish/${id}`, {
+                fetch(`https://blog-site-server-iota.vercel.app/wish/${id}`, {
                     method: "DELETE"
                 })
                 .then(res => res.json())

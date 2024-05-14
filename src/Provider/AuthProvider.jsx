@@ -36,12 +36,12 @@ const AuthProvider = ({ children }) => {
                 setLoading(false)
 
                
-                axios.post('https://blog-site-server-ezpys04xi-ziams-projects-ea91788d.vercel.app/jwt',loggedUser,{ withCredentials: true})
+                axios.post('https://blog-site-server-iota.vercel.app/jwt',loggedUser,{ withCredentials: true})
                 .then(res=>{
                     console.log(res.data);
                 })
             } else {
-                axios.post('https://blog-site-server-ezpys04xi-ziams-projects-ea91788d.vercel.app/logout', loggedUser,{ withCredentials: true})
+                axios.post('https://blog-site-server-iota.vercel.app/logout', loggedUser,{ withCredentials: true})
                 .then(res=>{
                     console.log(res.data);
                 })

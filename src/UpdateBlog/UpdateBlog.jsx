@@ -33,7 +33,7 @@ const UpdateBlog = () => {
         }
 
 
-        fetch(`https://blog-site-server-ezpys04xi-ziams-projects-ea91788d.vercel.app/data/${blog._id}`, {
+        fetch(`https://blog-site-server-iota.vercel.app/data/${blog._id}`, {
               method: 'PUT',
               headers: {
                   'content-type': 'application/json'

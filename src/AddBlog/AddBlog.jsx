@@ -31,7 +31,7 @@ const AddBlog = () => {
             userName,
             userImage
         }
-        fetch('https://blog-site-server-ezpys04xi-ziams-projects-ea91788d.vercel.app/data', {
+        fetch('https://blog-site-server-iota.vercel.app/data', {
               method: 'POST',
               headers: {
                   'content-type': 'application/json'

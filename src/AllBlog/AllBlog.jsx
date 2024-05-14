@@ -128,7 +128,7 @@ const AllBlog = () => {
         const wishBlog={blog,userEmaill}
         console.log(wishBlog)
         try {
-            const response = await fetch('https://blog-site-server-ezpys04xi-ziams-projects-ea91788d.vercel.app/Wish', {
+            const response = await fetch('https://blog-site-server-iota.vercel.app/Wish', {
                 method: 'POST',
                 headers: {
                     'Content-Type': 'application/json',
