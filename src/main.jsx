@@ -32,7 +32,7 @@ const router = createBrowserRouter([
       loader:()=>fetch('http://localhost:5000/data')
     },
     { path: "/AddBlog",
-      element: <AddBlog></AddBlog>
+      element: <PersonalRoute><AddBlog></AddBlog></PersonalRoute>
     },
     { path: "/FeaturedBlogs",
       element:<FeaturedBlogs></FeaturedBlogs>,
@@ -51,7 +51,7 @@ const router = createBrowserRouter([
       element: <Register></Register>
     },
     { path: "/UpdateBlog/:id",
-      element: <UpdateBlog></UpdateBlog>,
+      element: <PersonalRoute><UpdateBlog></UpdateBlog></PersonalRoute>,
       loader:({params})=>fetch(`http://localhost:5000/data/${params.id}`)
     },
    
@@ -59,7 +59,7 @@ const router = createBrowserRouter([
     element: <LogIn></LogIn>
   },
   { path: "/ViewDetails/:id",
-  element: <ViewDetails></ViewDetails>,
+  element: <PersonalRoute><ViewDetails></ViewDetails></PersonalRoute>,
   loader:({params})=>fetch(`http://localhost:5000/data/${params.id}`)
   
 },

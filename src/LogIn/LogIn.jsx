@@ -1,16 +1,21 @@
 import React, { useContext } from 'react';
-import { NavLink } from 'react-router-dom';
+import {  NavLink } from 'react-router-dom';
 import { FaGoogle } from "react-icons/fa";
 import { FaGithub } from "react-icons/fa";
 import { AuthContext } from '../Provider/AuthProvider';
 import { ToastContainer, toast } from 'react-toastify';
+
 import 'react-toastify/dist/ReactToastify.css';
+
 
 
 
 
 const LogIn = () => {
   const {singInUser,signInWithGoogle,githubLogIn}=useContext(AuthContext);
+
+ 
+  
 
 
   const handleGithubLogIn=()=>{
@@ -29,7 +34,8 @@ const LogIn = () => {
   const handleGoogleLogIn=()=>{
     signInWithGoogle()
     .then(result=>{
-      toast.success("Successfully Logged In With Google")
+      alert("Successfully Logged In With Google")
+     
       
     })
     .catch(error=>{
@@ -46,7 +52,13 @@ const LogIn = () => {
     singInUser(email,password)
     .then(result=>{
       console.log(result.user);
-      toast.success("Successfully Logged In ")
+      alert("Successfully Logged In ")
+      // if(result.user.email){
+      //   toast("Successfully Logged In ")
+
+      // }
+      // return;
+      
      
     })
     .catch(error=>{
@@ -93,7 +105,7 @@ const LogIn = () => {
           </p>
           
         </div>
-        <ToastContainer></ToastContainer>
+        
         
       
       </div>

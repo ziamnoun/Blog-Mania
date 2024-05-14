@@ -11,6 +11,9 @@ const Navbar = () => {
     logOut()
     .then(()=>{
       toast.success("Successfully Logged out")
+      setTimeout(() => {
+        window.location.reload();
+    }, 2000);
     })
     .catch(error=>{
       toast.error("Log Out Failed");

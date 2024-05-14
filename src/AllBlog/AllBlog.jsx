@@ -87,13 +87,21 @@
 import React, { useContext, useState } from 'react';
 import { Link, useLoaderData } from 'react-router-dom';
 import { AuthContext } from '../Provider/AuthProvider';
+import { toast, ToastContainer } from 'react-toastify';
 
 const AllBlog = () => {
     const blogData = useLoaderData();
     const [searchTerm, setSearchTerm] = useState('');
     const [selectedCategory, setSelectedCategory] = useState('');
-    const { user } = useContext(AuthContext);
-    const wishUser=user.email;
+   
+   
+
+    const { user,userEmaill } = useContext(AuthContext);
+    console.log(userEmaill)
+    // const wishUser=user.email
+    
+    
+   
 
     const filteredBlogs = blogData.filter(blog => {
         return (
@@ -115,8 +123,9 @@ const AllBlog = () => {
     };
 
     const addToWishlist = async (blog) => {
+       
         
-        const wishBlog={blog,wishUser}
+        const wishBlog={blog,userEmaill}
         console.log(wishBlog)
         try {
             const response = await fetch('http://localhost:5000/Wish', {
@@ -141,7 +150,7 @@ const AllBlog = () => {
 
     return (
         <div className='grid grid-cols-1 gap-5 md:w-[80%] m-auto mt-10'>
-            <div className="flex items-center mb-4">
+            <div className="sm:grid md:flex items-center mb-4">
                 <p className='text-3xl font-extrabold text-red-600'>Here are all the blogs:</p>
                 <input
                     type="text"
@@ -185,6 +194,7 @@ const AllBlog = () => {
                     </div>
                 </div>
             ))}
+            <ToastContainer></ToastContainer>
         </div>
     );
 };

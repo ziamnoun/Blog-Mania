@@ -10,7 +10,7 @@ const WishList = () => {
     const userEmail = user.email.toLowerCase();
 
  
-    const filteredWishList = wishData.filter(item => item.wishUser.toLowerCase() === userEmail);
+    const filteredWishList = wishData.filter(item => item.userEmaill.toLowerCase()=== userEmail);
 
     // const handleDelete = (_id) => {
     //     console.log(_id)
@@ -88,47 +88,53 @@ const WishList = () => {
     //         }
     //     });
     // };
-    const handleDelete=(_id)=>{
-        console.log(_id)
+    const handleDelete = (id) => {
         Swal.fire({
-          title: "Are you sure?",
-          text: "You won't be able to revert this!",
-          icon: "warning",
-          showCancelButton: true,
-          confirmButtonColor: "#3085d6",
-          cancelButtonColor: "#d33",
-          confirmButtonText: "Yes, delete it!"
+            title: "Are you sure?",
+            text: "You won't be able to revert this!",
+            icon: "warning",
+            showCancelButton: true,
+            confirmButtonColor: "#3085d6",
+            cancelButtonColor: "#d33",
+            confirmButtonText: "Yes, delete it!"
         }).then((result) => {
-          if (result.isConfirmed) {
-            fetch(`http://localhost:5000/wish/${_id}`,{
-              method:'DELETE'
-            })
-            .then(res=>res.json())
-            .then(data=>{
-              console.log(data);
-              if(data.deletedCount>0){
-                Swal.fire({
-              
-                  title: "Deleted!",
-                  text: "Your file has been deleted.",
-                  icon: "success"
+            if (result.isConfirmed) {
+                fetch(`http://localhost:5000/wish/${id}`, {
+                    method: "DELETE"
                 })
-                .then(() => {
-                 
-                  window.location.reload();
+                .then(res => res.json())
+                .then(data => {
+                    console.log(data); // Check server response
+                    if (data.deletedCount > 0) {
+                        Swal.fire({
+                            title: "Deleted!",
+                            text: "Your wished Blog has been deleted.",
+                            icon: "success"
+                        })
+                        .then(() => {
+                            // Reload the page or update state to reflect the deletion
+                            window.location.reload();
+                        });
+                    } else {
+                        throw new Error('No wish list item deleted');
+                    }
+                })
+                .catch(error => {
+                    console.error('Error deleting wish list item:', error);
+                    Swal.fire({
+                        title: "Error!",
+                        text: "Failed to delete wished Blog.",
+                        icon: "error"
+                    });
                 });
-    
-              }
-            })
-           
-          }
+            }
         });
+    };
     
-      }
     
 
     return (
-        <div className="container mx-auto px-4 py-8">
+        <div className="container mx-auto px-4 py-8 min-h-screen">
             <h1 className="text-3xl font-bold mb-6 text-center text-gray-800">Wish List</h1>
             <div className="overflow-x-auto">
                 <table className="table-auto w-full border-collapse">
@@ -147,7 +153,7 @@ const WishList = () => {
                                 <td className="py-3 px-6 text-left">{item.blog.shortDescription}</td>
                                 <td className="py-3 px-6 text-left">{item.blog.date}</td>
                                 <td className="py-3 px-6 text-center">
-                                    <button className="bg-red-600 text-white py-2 px-4 rounded-lg mr-2 transition duration-300 hover:bg-red-600" onClick={() => handleDelete(item.blog._id)}>Delete</button>
+                                    <button className="bg-red-600 text-white py-2 px-4 rounded-lg mr-2 transition duration-300 hover:bg-red-600" onClick={() => handleDelete(item._id)}>Delete</button>
                                     <button className="bg-blue-500 text-white py-2 px-4 rounded-lg transition duration-300 hover:bg-blue-600">View Details</button>
                                 </td>
                             </tr>
@@ -160,6 +166,8 @@ const WishList = () => {
 };
 
 export default WishList;
+
+
 
 
 

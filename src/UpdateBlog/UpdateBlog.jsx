@@ -62,7 +62,7 @@ const UpdateBlog = () => {
                             id="image"
                             name="image"
                             className="w-full px-3 py-2 leading-tight text-gray-700 bg-gray-200 border rounded shadow appearance-none focus:outline-none focus:shadow-outline"
-                            placeholder={blog.imageURL}
+                            defaultValue={blog.imageURL}
                         />
                     </div>
                   
@@ -73,7 +73,7 @@ const UpdateBlog = () => {
                             id="itemName"
                             name="itemName"
                             className="w-full px-3 py-2 leading-tight text-gray-700 bg-gray-200 border rounded shadow appearance-none focus:outline-none focus:shadow-outline"
-                            placeholder={blog.title}
+                            defaultValue={blog.title}
                         />
                     </div>
                     <div className="mb-4">
@@ -101,7 +101,7 @@ const UpdateBlog = () => {
                             name="shortDescription"
                             rows="3"
                             className="w-full px-3 py-2 leading-tight text-gray-700 bg-gray-200 border rounded shadow appearance-none focus:outline-none focus:shadow-outline"
-                            placeholder={blog.shortDescription}
+                            defaultValue={blog.shortDescription}
                         ></textarea>
                     </div>
                     <div className="mb-4">
@@ -111,7 +111,7 @@ const UpdateBlog = () => {
                             name="longDescription"
                             rows="3"
                             className="w-full px-3 py-2 leading-tight text-gray-700 bg-gray-200 border rounded shadow appearance-none focus:outline-none focus:shadow-outline"
-                            placeholder={blog.longDescription}
+                            defaultValue={blog.longDescription}
                         ></textarea>
                     </div>
                     <div className="mb-4">
@@ -121,7 +121,7 @@ const UpdateBlog = () => {
                             id="Date"
                             name="Date"
                             className="w-full px-3 py-2 leading-tight text-gray-700 bg-gray-200 border rounded shadow appearance-none focus:outline-none focus:shadow-outline"
-                            placeholder={blog.date}
+                            defaultValue={blog.date}
                         />
                     </div>
                     <div className="mb-4">
@@ -131,7 +131,7 @@ const UpdateBlog = () => {
                             id="userEmail"
                             name="userEmail"
                             className="w-full px-3 py-2 leading-tight text-gray-700 bg-gray-200 border rounded shadow appearance-none focus:outline-none focus:shadow-outline"
-                            placeholder={blog.userEmail}
+                            defaultValue={blog.userEmail}
                             required
                         />
                     </div>
@@ -142,7 +142,7 @@ const UpdateBlog = () => {
                             id="userName"
                             name="userName"
                             className="w-full px-3 py-2 leading-tight text-gray-700 bg-gray-200 border rounded shadow appearance-none focus:outline-none focus:shadow-outline"
-                            placeholder={blog.userName}
+                            defaultValue={blog.userName}
                         />
                     </div>
                     <div className="mb-4">
@@ -152,7 +152,7 @@ const UpdateBlog = () => {
                             id="userImage"
                             name="userImage"
                             className="w-full px-3 py-2 leading-tight text-gray-700 bg-gray-200 border rounded shadow appearance-none focus:outline-none focus:shadow-outline"
-                            placeholder={blog.userImage}
+                            defaultValue={blog.userImage}
                         />
                     </div>
                     <div className="mb-6">
