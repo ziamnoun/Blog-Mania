@@ -104,7 +104,7 @@ const WishList = () => {
                 })
                 .then(res => res.json())
                 .then(data => {
-                    console.log(data); // Check server response
+                    console.log(data); 
                     if (data.deletedCount > 0) {
                         Swal.fire({
                             title: "Deleted!",
@@ -112,7 +112,7 @@ const WishList = () => {
                             icon: "success"
                         })
                         .then(() => {
-                            // Reload the page or update state to reflect the deletion
+                            
                             window.location.reload();
                         });
                     } else {

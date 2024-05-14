@@ -18,6 +18,7 @@ import PersonalRoute from "./PersonalROute/PersonalRoute";
 import HomeCard from "./HomeCard/HomeCard";
 import UpdateBlog from "./UpdateBlog/UpdateBlog";
 import ViewDetails from "./ViewDetails/ViewDetails";
+import Error404 from "./ViewDetails/404/Error404";
 
 
 
@@ -71,6 +72,10 @@ const router = createBrowserRouter([
     element: <HomeCard></HomeCard>,
     loader:()=>fetch('https://blog-site-server-iota.vercel.app/data')
   },
+  { path: "/Error404",
+  element: <Error404></Error404>,
+ 
+},
   
 ]);
 
