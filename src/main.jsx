@@ -29,22 +29,22 @@ const router = createBrowserRouter([
     children:[
       { path: "/",
       element: <Home></Home>,
-      loader:()=>fetch('http://localhost:5000/data')
+      loader:()=>fetch('https://blog-site-server-ezpys04xi-ziams-projects-ea91788d.vercel.app/data')
     },
     { path: "/AddBlog",
       element: <PersonalRoute><AddBlog></AddBlog></PersonalRoute>
     },
     { path: "/FeaturedBlogs",
       element:<FeaturedBlogs></FeaturedBlogs>,
-      loader:()=>fetch('http://localhost:5000/data')
+      loader:()=>fetch('https://blog-site-server-ezpys04xi-ziams-projects-ea91788d.vercel.app/data')
     },
     { path: "/AllBlog",
       element: <AllBlog></AllBlog>,
-      loader:()=>fetch('http://localhost:5000/data')
+      loader:()=>fetch('https://blog-site-server-ezpys04xi-ziams-projects-ea91788d.vercel.app/data')
     },
     { path: "/WishList",
       element: <PersonalRoute><WishList></WishList></PersonalRoute>,
-      loader:()=>fetch('http://localhost:5000/wish')
+      loader:()=>fetch('https://blog-site-server-ezpys04xi-ziams-projects-ea91788d.vercel.app/wish')
     },
    
     { path: "/Register",
@@ -52,7 +52,7 @@ const router = createBrowserRouter([
     },
     { path: "/UpdateBlog/:id",
       element: <PersonalRoute><UpdateBlog></UpdateBlog></PersonalRoute>,
-      loader:({params})=>fetch(`http://localhost:5000/data/${params.id}`)
+      loader:({params})=>fetch(`https://blog-site-server-ezpys04xi-ziams-projects-ea91788d.vercel.app/data/${params.id}`)
     },
    
     { path: "/LogIn",
@@ -60,7 +60,7 @@ const router = createBrowserRouter([
   },
   { path: "/ViewDetails/:id",
   element: <PersonalRoute><ViewDetails></ViewDetails></PersonalRoute>,
-  loader:({params})=>fetch(`http://localhost:5000/data/${params.id}`)
+  loader:({params})=>fetch(`https://blog-site-server-ezpys04xi-ziams-projects-ea91788d.vercel.app/data/${params.id}`)
   
 },
   
@@ -69,7 +69,7 @@ const router = createBrowserRouter([
   },
   { path: "/HomeCard",
     element: <HomeCard></HomeCard>,
-    loader:()=>fetch('http://localhost:5000/data')
+    loader:()=>fetch('https://blog-site-server-ezpys04xi-ziams-projects-ea91788d.vercel.app/data')
   },
   
 ]);

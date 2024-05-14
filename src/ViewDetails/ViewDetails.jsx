@@ -16,7 +16,7 @@ const ViewDetails = () => {
  const [commentText,setCommentText]=useState([])
 
  useEffect(() => {
-  fetch("http://localhost:5000/comment")
+  fetch("https://blog-site-server-ezpys04xi-ziams-projects-ea91788d.vercel.app/comment")
     .then(res => {
       if (!res.ok) {
         throw new Error("Network response was not ok");
@@ -72,7 +72,7 @@ const isOwner = user && user.email.toLowerCase() === blog.userEmail.toLowerCase(
         comment,postId,userName,uImage
       }
 
-      fetch('http://localhost:5000/comment', {
+      fetch('https://blog-site-server-ezpys04xi-ziams-projects-ea91788d.vercel.app/comment', {
         method: 'POST',
         headers: {
             'content-type': 'application/json'

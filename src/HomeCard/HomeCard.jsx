@@ -67,7 +67,7 @@
 //     const wishBlog={blogData,userEmail}
 //     console.log(wishBlog)
 //     try {
-//         const response = await fetch('http://localhost:5000/Wish', {
+//         const response = await fetch('https://blog-site-server-ezpys04xi-ziams-projects-ea91788d.vercel.app/Wish', {
 //             method: 'POST',
 //             headers: {
 //                 'Content-Type': 'application/json',
@@ -157,7 +157,7 @@ const HomeCard = () => {
   //   const wishBlog = { blogData, userEmaill };
   //   console.log(wishBlog);
   //   try {
-  //       const response = await fetch('http://localhost:5000/Wish', {
+  //       const response = await fetch('https://blog-site-server-ezpys04xi-ziams-projects-ea91788d.vercel.app/Wish', {
   //           method: 'POST',
   //           headers: {
   //               'Content-Type': 'application/json',
